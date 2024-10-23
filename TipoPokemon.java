@@ -17,12 +17,12 @@ public enum TipoPokemon {
     ACO("Aço", "Eficaz contra Gelo, Pedra e Fada."),
     FADA("Fada", "Eficaz contra Luta, Sombrio e Dragão."),
     SOMBRIO("Sombrio", "Eficaz contra Psíquico e Fantasma."),
-    VENENOSO("Venenoso", "Eficaz contra Grama e Fada.");
+    VENENOSO("Venenoso", "Eficaz contra Grama e Fada."),
+    VENTO("Vento", "Eficaz contra Fogo, Água, Grama e Pedra."); // Definição do tipo Vento
 
     private final String nome;
     private final String descricao;
 
-    // EnumMaps para fraquezas e resistências
     private static final EnumMap<TipoPokemon, TipoPokemon[]> fraquezas = new EnumMap<>(TipoPokemon.class);
     private static final EnumMap<TipoPokemon, TipoPokemon[]> resistencias = new EnumMap<>(TipoPokemon.class);
 
@@ -33,25 +33,27 @@ public enum TipoPokemon {
 
     static {
         // Definindo fraquezas
-        fraquezas.put(FOGO, new TipoPokemon[]{AGUA, GRAMA}); // Fogo é fraco contra Água, Grama
+        fraquezas.put(FOGO, new TipoPokemon[]{AGUA, PEDRA}); // Fogo é fraco contra Água e Pedra
         fraquezas.put(AGUA, new TipoPokemon[]{GRAMA, ELETRICO});
-        fraquezas.put(GRAMA, new TipoPokemon[]{FOGO, AGUA});
+        fraquezas.put(GRAMA, new TipoPokemon[]{FOGO, VENTO});
         fraquezas.put(ELETRICO, new TipoPokemon[]{TERRESTRE});
         fraquezas.put(PSIQUICO, new TipoPokemon[]{LUTA, INSETO});  
         fraquezas.put(LUTA, new TipoPokemon[]{PSIQUICO, FADA}); 
         fraquezas.put(NORMAL, new TipoPokemon[]{LUTA, FANTASMA}); 
         fraquezas.put(INSETO, new TipoPokemon[]{FOGO, VENTO}); 
         fraquezas.put(FANTASMA, new TipoPokemon[]{FANTASMA}); 
+        fraquezas.put(VENTO, new TipoPokemon[]{FOGO, AGUA}); // Vento é fraco contra Fogo e Água
 
         // Definindo resistências
         resistencias.put(FOGO, new TipoPokemon[]{GRAMA, FOGO});
         resistencias.put(AGUA, new TipoPokemon[]{FOGO, AGUA});
-        resistencias.put(GRAMA, new TipoPokemon[]{ÁGUA, TERRESTRE});
+        resistencias.put(GRAMA, new TipoPokemon[]{AGUA, TERRESTRE});
         resistencias.put(ELETRICO, new TipoPokemon[]{ELETRICO});
         resistencias.put(PSIQUICO, new TipoPokemon[]{PSIQUICO});
         resistencias.put(LUTA, new TipoPokemon[]{GRAMA});
         resistencias.put(NORMAL, new TipoPokemon[]{NORMAL});
         resistencias.put(VENENOSO, new TipoPokemon[]{GRAMA});
+        resistencias.put(VENTO, new TipoPokemon[]{GRAMA}); // Vento resiste a Grama
     }
 
     public TipoPokemon[] getFraquezas() {

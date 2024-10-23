@@ -79,7 +79,6 @@ public enum TiposAtaque {
     SUSSURRO_SOMBRIO(TipoPokemon.SOMBRIO,"Sussurro Sombrio",15 ,55 ,90),
     IMPACTO_SOMBRIO(TipoPokemon.SOMBRIO,"Impacto Sombrio",12 ,70 ,80),
     PENSAMENTO_SOMBRIO(TipoPokemon.SOMBRIO,"Pensamento Sombrio",20 ,40 ,100),
-
     
     TOQUE_VENENOSO(TipoPokemon.VENENOSO,"Toque Venenoso",10 ,30 ,100),
     DRENAGEM_VENENOSA(TipoPokemon.VENENOSO,"Drenagem Venenosa",20 ,50 ,95),
@@ -122,7 +121,6 @@ public enum TiposAtaque {
     
    @Override
    public String toString() {
-        return String.format("%s (%s) - PP: %d, Dano: %d, Acerto: %d%%",
-                nome,tipo.getNome(), pontosDePoder,danoBase,%percentualAcerto);
+        return nome + " (" + tipo + ") - PP: " + pontosDePoder + ", Dano: " + danoBase + ", Acerto: " + percentualAcerto + "%";
    }
 }

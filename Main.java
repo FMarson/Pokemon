@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Pokemon pokemon1 = new PokemonAgua("Squirtle");
-        Pokemon pokemon2 = new PokemonFogo("Charmander");
+        Pokemon pokemon1 = new PokemonAgua("Squirtle", Regioes.KANTO);
+        Pokemon pokemon2 = new PokemonFogo("Charmander", Regioes.KANTO);
 
         pokemon1.lutar(pokemon2);
         

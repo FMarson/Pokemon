@@ -1,7 +1,7 @@
 public class Pokemon {
-    private String nome;
-    private TipoPokemon tipo;
-    private Regioes regiao; // Região de origem do Pokémon
+    private final String nome;
+    private final TipoPokemon tipo;
+    private final Regioes regiao; // Região de origem do Pokémon
     private int vida;
     private int forcaAtaque; // Força de ataque
     private int defesa;      // Defesa
@@ -11,7 +11,7 @@ public class Pokemon {
     private int numeroLutas; // Número de lutas que o Pokémon participou
     private int evolucaoAtual;   // Evolução atual do Pokémon
 
-    public Pokemon(String nome, TipoPokemon tipo, int forcaAtaque, int defesa, int velocidade, int nivel, int numeroEvolucoes) {
+    public Pokemon(String nome, TipoPokemon tipo, int forcaAtaque, int defesa, int velocidade, int nivel, int numeroEvolucoes, Regioes regiao) {
         this.nome = nome;
         this.tipo = tipo;
         this.vida = 100; // Vida inicial
@@ -22,11 +22,12 @@ public class Pokemon {
         this.numeroEvolucoes = numeroEvolucoes;
         this.evolucaoAtual = 0; // Começa sem evoluções
         this.numeroLutas = 0; // Começa sem lutas
+        this.regiao = regiao;
     }
 
     public void lutar(Pokemon alvo) {
         System.out.println(this.nome + " inicia uma luta contra " + alvo.nome + "!");
-
+    
         // Simulação de turnos de luta, considerando a velocidade
         while (this.vida > 0 && alvo.vida > 0) {
             if (this.velocidade >= alvo.velocidade) {
@@ -41,17 +42,18 @@ public class Pokemon {
                 }
             }
         }
-
+    
         if (this.vida <= 0) {
             System.out.println(this.nome + " foi derrotado!");
         } else {
             System.out.println(alvo.nome + " foi derrotado!");
         }
-
+    
         // Após a luta, registra a luta para ambos os Pokémon
         registrarLuta();
         alvo.registrarLuta();
     }
+    
 
     public void atacar(Pokemon alvo) {
         float danoBase = calcularDano(alvo);
